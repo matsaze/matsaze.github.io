@@ -1,0 +1,226 @@
+/* Layout VVV */
+
+body {
+  margin: 0px;
+  background-color: #f7f7f7;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+
+  font-family: arial;
+  font-size: 16px;
+  line-height: 120%;
+
+  display: grid;
+
+  grid-template-columns: 15% minmax(0, 70%) 15%;
+  grid-template-rows: fit-content(1em) auto fit-content(1em);
+
+  gap: 0.5em;
+
+  padding: 0.5em;
+  box-sizing: border-box;
+}
+
+.container .header,
+.container .content,
+.container .footer {
+  padding-top: 0.5em;
+  padding-right: 4em;
+  padding-bottom: 0.5em;
+  padding-left: 4em;
+  background-color: #fff;
+}
+
+.header {
+  grid-column-start: 2;
+  grid-column-end: 3;
+
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.content {
+  grid-column-start: 2;
+  grid-column-end: 3;
+
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.content p { text-indent: 2em; }
+
+.footer {
+  grid-column-start: 2;
+  grid-column-end: 3;
+
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+div .header,
+div .content,
+div .footer { box-shadow: 10px 10px 10px rgba(0, 0, 0, .1); }
+
+/* Layout ^^^ */
+
+ul { list-style-position: inside; }
+
+ul.index {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.description {
+  padding-right: 2em;
+  padding-left: 2em;
+  text-indent: 2em;
+  font-style: italic;
+}
+
+.epitaph {
+  text-align: center;
+  font-style: italic;
+}
+
+.bold-title {
+  font-weight: 900;
+  line-height: 120%;
+}
+
+.bold { font-weight: bold; }
+
+.italic { font-style: italic; }
+
+/* Tags */
+
+.person,
+.place,
+.place2,
+.group,
+.group2,
+.conflict,
+.book,
+.artifact,
+.region { font-weight: bold; }
+
+.person { color: #2d5aa0; }
+a.person { color: #6987e1; }
+
+.place { color: #964b37; }
+a.place { color: #785032; }
+
+.group { color: #198c8c; }
+a.group { color: #3ccdbe; }
+
+.conflict { color: #a0140a; }
+a.conflict { color: #dc3214; }
+
+.book { color: #873c82; }
+a.book { color: #be6eb9; }
+
+.artifact { color: #e6aa1e; }
+a.artifact { color: #e6aa1e; }
+
+.region { color: #508714; }
+a.region { color: #7db937; }
+
+.strength,
+.weakness,
+.quirk,
+.values,
+.trauma,
+.dream { font-weight: bold; }
+
+.strength { background-color:#a2dc34; }
+.weakness { background-color:#ff113a; }
+.quirk { background-color:#c0c0c0; }
+.values { background-color:#12fecf }
+.trauma { background-color:#e811ff }
+.dream { background-color:#ffe111 }
+
+/* Family Tree */
+/* <ul><li><a href="#">Urist McParent</a></li></ul> */
+
+.tree * {
+  margin: 0;
+  padding: 0;
+}
+
+.tree {
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* text-align: center; */
+}
+
+.tree ul {
+  padding-top: 20px;
+  position: relative;
+  list-style-type: none;
+}
+
+.tree li {
+  text-align: center;
+  position: relative;
+  padding: 20px 5px 0 5px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 -2px 0 -2px;
+}
+
+/*Draw connectors*/
+.tree li::before,
+.tree li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 2px solid #ccc;
+  width: 50%;
+  height: 20px;
+}
+
+.tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 2px solid #ccc;
+}
+
+/*Remove left-right connectors from elements without any siblings*/
+.tree li:only-child::after,
+.tree li:only-child::before {
+  display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child { padding-top: 0; }
+
+/*Remove left connector from first child and right connector from last child*/
+.tree li:first-child::before,
+.tree li:last-child::after { border: none; }
+
+/*Add back the vertical connector to the last nodes*/
+.tree li:last-child::before { border-right: 2px solid #ccc; }
+
+/*Add downward connectors from parents*/
+.tree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 2px solid #ccc;
+  width: 0;
+  height: 20px;
+}
+
+.tree li span,
+.tree li a {
+  border: 2px solid #ccc;
+  padding: 5px 10px;
+  font-size: 12px;
+  display: inline-block;
+}
